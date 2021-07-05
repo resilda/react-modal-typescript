@@ -53,41 +53,14 @@ export function dataFailure(errorMessage: Components) {
 	};
 }
 
-// export function fetchData() {
-// 	return async function(request: any, response: Array<Users>, dispatch: any) {
-// 		dispatch(dataRequest())
-// 		return new Promise((resolve: any, reject)) => {
-// 			request.get(`${USERS_API}`, function(error, response, body) {
-
-// 			})
-// 		}
-// 		// try {
-// 		// 	response = await axios.get(`${USERS_API}`);
-// 		// 	dispatch(dataSuccess(response.JSON))
-// 		// }
-// 		// catch{
-
-// 		// }
-// 	};
-// }
-
 export function fetchData() {
-	return async function(response: Array<Users>, dispatch: any) {
+	return async function(dispatch: any) {
 		dispatch(dataRequest());
 		try {
-			respone = 
+			const respone: any = await axios.get(`${USERS_API}`);
+			dispatch(dataSuccess(respone));
+		} catch (error) {
+			dispatch(dataFailure(error));
 		}
-	}
+	};
 }
-
-// function registerCustomerApi(companyId: String, dateOfBirth: String, mobileNo: String) {
-//     return new Promise((resolve, reject) => {
-//         request.get(`http://localhost:57580/api/aes_brand/customer/validate_customer/SG01/1990-01-01/8299687`, function (error, response, body) {
-//             if(error) {
-//                 reject(error);
-//             } else {
-//                 resolve(body)
-//             }
-//         })
-//     })
-// }
