@@ -18,40 +18,42 @@ const FullWrapper = styled.div`
 	}
 `;
 
-const Container = styled.div`
+const ModalOverlay = styled.div`
 	position: fixed;
-	background: #00000050;
-	opacity: 0.5;
+	background: rgba(0, 0, 0, 0.7);
 	width: 100%;
 	height: 100vh;
 	top: 0;
 	left: 0;
 	display: flex;
+	justify-content: center;
 	align-items: center;
 `;
-
-const Wrapper0 = styled.div``;
 
 const Wrapper1 = styled.div`
 	display: flex;
 	flex-direction: column;
-	margin: 0 auto;
-	max-height: 70vh;
-	margin-top: calc(120vh - 85vh - 10px);
-	margin-left: calc(120vh - 85vh - 10px);
+	justify-content: center;
+	align-items: center;
+
 	background: #e8e8e8;
 	box-shadow: '0 2px 3px 2px #8ABAAC';
 	border-radius: 4px;
 	padding: 20px;
 	border: 0;
 	background-color: whitesmoke;
-	height: 100vh;
-	width: calc(1920/2 - 500px);
-	height: 20vh;
+	width: 50vw;
+	height: 40vh;
+	/* width: calc(1920/2 - 500px);
+	height: 20vh; */
 	/* width: pageWidth/2;
 	height: pageHeight/2; */
 
-	.opacity-animate3 {
+	@media screen and (max-width: 600px) {
+		width: 80vw;
+    }
+
+	.animation-form {
 		animation: opt-animation3 1s;
 		-moz-animation-fill-mode: forwards;
 		-webkit-animation-fill-mode: forwards;
@@ -123,7 +125,8 @@ const Wrapper1 = styled.div`
 		margin-bottom: 20px;
 		background-color: blueviolet;
 		color: white;
-		margin: 10px;
+		margin: 20px;
+		margin-left: 46px;
 		width: 130px;
 		height: 35px;
 	}
@@ -137,4 +140,4 @@ const Wrapper2 = styled.div`
 	justify-content: center;
 `;
 
-export { FullWrapper, Container, Wrapper0, Wrapper1, Wrapper2 };
+export { FullWrapper, ModalOverlay, Wrapper1, Wrapper2 };

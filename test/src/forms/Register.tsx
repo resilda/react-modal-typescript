@@ -1,7 +1,9 @@
-import { useForm } from 'react-hook-form';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import RegisterContainer from './styles/RegisterContainer';
+import FilledInput from '@material-ui/core/FilledInput';
+import Button from '@material-ui/core/Button';
 
 type RegisterData = {
-	username: String;
 	email: String;
 	password: any;
 };
@@ -10,30 +12,30 @@ interface Components {
 	data: any;
 }
 
-function Register(registered: RegisterData, others: Components) {
-	const { register, setValue, handleSubmit, formState: { errors } } = useForm<RegisterData>();
+function Register() {
+	const { register, setValue, handleSubmit } = useForm<RegisterData>();
 
-	const onSubmit = handleSubmit(() => console.log('data', others.data));
+	const onSubmit: SubmitHandler<Components> = data => console.log(data);
 
 	return (
-		<form onSubmit={onSubmit}>
-			<label>Username</label>
-			<input {...register('username')} />
-			<label>Email</label>
-			<input {...register('email')} />
-			<label>Password</label>
-			<input {...register('password')} />
-			<button
-				type="button"
-				onClick={() => {
-					setValue('username', 'resilda');
-					setValue('email', 'resilda@yahoo.com');
-					setValue('password', 'dhjeiwhrie');
-				}}
-			>
-				SetValue
-			</button>
-		</form>
+		<RegisterContainer>
+			<form onSubmit={handleSubmit(onSubmit)} className="form-register">
+				<label>Email</label>
+				<FilledInput {...register('email')}  className="input"/>
+				<label>Password</label>
+				<FilledInput {...register('password')}  className="input"/>
+				<Button
+					type="button"
+					onClick={() => {
+						setValue('email', 'resilda@yahoo.com');
+						setValue('password', 'iwhrie');
+					}}
+					className="button"
+				>
+					SetValue
+				</Button>
+			</form>
+		</RegisterContainer>
 	);
 }
 

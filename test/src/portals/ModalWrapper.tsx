@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import Modal from './Modal';
 import ModalContent from './ModalContent';
-import { FullWrapper, Container, Wrapper0 } from './styles/ModalContainer';
+import { FullWrapper, ModalOverlay } from './styles/ModalContainer';
 import Button from '@material-ui/core/Button';
 
 function ModalWrapper() {
@@ -17,15 +17,11 @@ function ModalWrapper() {
 			<Button type="button" className="button" onClick={handleModalOpen}>
 				Click me
 			</Button>
-			{modalOpen ? (
-				<Container>
-					<Wrapper0>
-						<Modal modalOpen={modalOpen}>
-							<ModalContent setModalOpen={setModalOpen} />
-						</Modal>
-					</Wrapper0>
-				</Container>
-			) : null}
+			<Modal modalOpen={modalOpen}>
+				<ModalOverlay onClick={() => setModalOpen(false)}>
+					<ModalContent setModalOpen={setModalOpen} />
+				</ModalOverlay>
+			</Modal>
 		</FullWrapper>
 	);
 }
