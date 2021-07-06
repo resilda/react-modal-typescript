@@ -18,12 +18,14 @@ function ModalWrapper() {
 				Click me
 			</Button>
 			<Modal modalOpen={modalOpen}>
-				<ModalOverlay onClick={() => setModalOpen(false)}>
+				<ModalOverlay>
 					<ModalContent setModalOpen={setModalOpen} />
 				</ModalOverlay>
 			</Modal>
 		</FullWrapper>
 	);
 }
+
+// onClick={() => setModalOpen(false)}
 
 export default ModalWrapper;

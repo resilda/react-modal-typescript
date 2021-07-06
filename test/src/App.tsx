@@ -1,6 +1,6 @@
 // import UserData from './users/UserData';
 import ModalWrapper from './portals/ModalWrapper';
-//import Resize from './portals/Resize';
+// import Resize from './portals/Resize';
 import './App.css';
 
 function App() {
