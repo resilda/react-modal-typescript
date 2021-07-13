@@ -1,5 +1,3 @@
-//Module, Format, Target workflow step (types)
-
 interface Option {
 	value: any;
 	label: String;
@@ -11,8 +9,6 @@ export interface Props {
 	onChange: (optionValue: any) => void;
 	placeholder: String;
 }
-
-//Description, Date, Time (types)
 
 export interface DescriptionProps {
 	placeholder: String;
@@ -28,5 +24,5 @@ export interface DateProps {
 export interface TimeProps {
 	timeOption: any;
 	selectedTime: any;
-	color: String;
+	timeFormat: any;
 }

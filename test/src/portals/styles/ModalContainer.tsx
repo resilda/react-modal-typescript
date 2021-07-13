@@ -2,16 +2,17 @@ import styled from 'styled-components';
 
 export const FullWrapper = styled.div`
 	display: flex;
-	justify-content: center;
+	justify-content: flex-end;
 	align-items: center;
+	margin-right: 30px;
 
 	& .button {
 		margin-bottom: 20px;
 		background-color: #492b66;
 		color: white;
 		margin: 10px;
-		width: 130px;
-		height: 35px;
+		width: 110px;
+		height: 33px;
 	}
 `;
 
@@ -94,12 +95,12 @@ export const Wrapper1 = styled.div`
 
 	@media screen and (min-width: 1201px) and (max-width: 1400px) {
 		width: 70vw;
-		height: 60vh;
+		height: 70vh;
 	}
 
 	@media screen and (min-width: 1400px) {
 		width: 50vw;
-		height: 72vh;
+		height: 65vh;
 	}
 
 	& .animation-form {

@@ -4,15 +4,15 @@ import { InitialStateProps } from '../propsTypes/propsTypes';
 const initialState: InitialStateProps = {
 	loading: false,
 	userData: [],
-	error: null,
-}
+	error: null
+};
 
 function usersReducer(state = initialState, action: any) {
 	if (action.type === actionTypes.DATA_REQUEST) {
 		return {
 			...state,
 			loading: true
-		}
+		};
 	}
 
 	if (action.type === actionTypes.DATA_SUCCESS) {
@@ -20,7 +20,7 @@ function usersReducer(state = initialState, action: any) {
 			...state,
 			loading: false,
 			userData: action.payload
-		}
+		};
 	}
 
 	if (action.type === actionTypes.DATA_FAILURE) {
@@ -28,7 +28,7 @@ function usersReducer(state = initialState, action: any) {
 			...state,
 			userData: [],
 			error: action.payload
-		}
+		};
 	}
 
 	return state;

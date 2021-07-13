@@ -12,16 +12,13 @@ import TimeOptions from './TimeOptions';
 import { ModuleContentContainer } from './styles/ModuleContentContanier';
 import Button from '@material-ui/core/Button';
 
-//String(moment(new Date()).format("dd/MMM/yyyy"))
-
 function ContentContainer() {
-	const [valueOptionModule, setValueOptionModule] = useState(null);
-	const [valueOptionsForms, setValueOptionForms] = useState(null);
-	const [valueOptionTarget, setValueOptionTarget] = useState(null);
-	const [valueDatePicker, setValueDatePicker] = useState(new Date());
-	const [valueTimePicker, setValueTimePicker] = useState(moment().format("hh:mm"));
-	const [setColorCalendarIcon] = useState('#1f1c1c');
-	const [setColorClockIcon] = useState('#3f3c3c')
+	const [ valueOptionModule, setValueOptionModule ] = useState(null);
+	const [ valueOptionsForms, setValueOptionForms ] = useState(null);
+	const [ valueOptionTarget, setValueOptionTarget ] = useState(null);
+	const [ valueDatePicker, setValueDatePicker ] = useState(new Date());
+	const [ valueTimePicker, setValueTimePicker ] = useState(moment().format('hh:mm'));
+	const [ setColorCalendarIcon ] = useState('#1f1c1c');
 
 	return (
 		<ModuleContentContainer>
@@ -54,24 +51,18 @@ function ContentContainer() {
 				<DateOptions
 					dateOption={valueDatePicker}
 					selectedDate={setValueDatePicker}
-					dateFormat={('dd-MM-yy')}
+					dateFormat={'dd-MM-yy'}
 					color={setColorCalendarIcon}
 				/>
-				<TimeOptions
-					timeOption={valueTimePicker}
-					selectedTime={setValueTimePicker}
-					color={setColorClockIcon}
-				/>
+				<TimeOptions timeOption={valueTimePicker} selectedTime={setValueTimePicker} timeFormat={'hh:mm a'} />
 			</div>
-			<div className="wrapper-2" style={{ marginRight: '17px' }}>
-				<Button
-					className="submit-button">
-					Submit New Record
-				</Button>
+			<div className="wrapper-2" style={{ marginRight: '30px' }}>
+				<Button className="submit-button">Submit New Record</Button>
 			</div>
 		</ModuleContentContainer>
 	);
 }
 
 export default ContentContainer;
+
 //https://www.youtube.com/watch?v=I0NqxaUkjR8&list=RDIiqfKF9BlcI&index=8

@@ -6,8 +6,12 @@ export const ModuleContentContainer = styled.div`
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: space-between;
-		
+
 		.react-date-picker__wrapper {
+			border: 0 solid black;
+		}
+
+		.react-time-picker__wrapper {
 			border: 0 solid black;
 		}
 	}
@@ -55,7 +59,7 @@ export const WrapperContainer = styled.div`
 	position: relative;
 	border-radius: 3px;
 	margin: 10px;
-	margin-right: 3.9px;
+	margin-right: 25px;
 	margin-left: 7px;
 
 	& .wrapper-container {
@@ -169,6 +173,19 @@ export const WrapperContainer = styled.div`
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: space-between;
+
+		.react-date-picker__inputGroup {
+			padding: 0 10px;
+		}
+
+		.react-date-picker__button:enabled:hover .react-date-picker__button__icon,
+		.react-date-picker__button:enabled:focus .react-date-picker__button__icon {
+			stroke: black;
+		}
+
+		.react-time-picker__inputGroup {
+			padding: 0 12px;
+		}
 	}
 
 	& .date-time-option {
@@ -189,7 +206,7 @@ export const WrapperContainer = styled.div`
 		position: absolute;
 		width: 100%;
 		height: 20px;
-		margin-left: 150px;
+		margin-left: 200px;
 		margin-top: 6px;
 		opacity: 0.8;
 		cursor: pointer;
@@ -199,7 +216,7 @@ export const WrapperContainer = styled.div`
 		position: absolute;
 		width: 100%;
 		height: 25px;
-		margin-left: 150px;
+		margin-left: 200px;
 		margin-top: 5px;
 		margin-bottom: 3px;
 		opacity: 0.8;
@@ -213,7 +230,8 @@ interface ArrowContainerProps {
 
 export const ArrowContainer =
 	styled.div <
-		ArrowContainerProps >`
+	ArrowContainerProps >
+	`
 	//transform: rotate(${(props) => (props.opened ? '180deg' : '0deg')});
 `;
 

@@ -2,28 +2,32 @@ import { useState } from 'react';
 import TimePicker from 'react-time-picker';
 import { TimeProps } from './types/propsTypes';
 import { WrapperContainer } from './styles/ModuleContentContanier';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 
-function TimeOptions({ timeOption, selectedTime, color }: TimeProps) {
-	const [openTimeCapsule, setOpenTimeCapsule] = useState(false);
-	const [timeFormatInput, setTimeFormatInput] = useState(timeOption)
+function TimeOptions({ timeOption, selectedTime, timeFormat }: TimeProps) {
+	const [ openTimeCapsule, setOpenTimeCapsule ] = useState(false);
 
 	return (
 		<WrapperContainer>
 			<div className="wrapper-container-date">
-				<div className="wrapper-container-date-2">
-					<div className="label-option">{timeFormatInput}</div>
-					<ArrowDropDownIcon className="clock-option" style={{ color: `${color}` }} onClick={() => {
-						setOpenTimeCapsule(!openTimeCapsule);
-						setTimeFormatInput('')
-					}} />
-					{openTimeCapsule ? <TimePicker
+				<div className="wrapper-container-date-2" onClick={() => setOpenTimeCapsule(!openTimeCapsule)}>
+					<TimePicker
 						value={timeOption}
 						onChange={selectedTime}
 						clearIcon={null}
 						disableClock={true}
+						format={timeFormat}
 						className="date-time-option"
-					/> : null}
+					/>
+					{openTimeCapsule ? (
+						<TimePicker
+							value={timeOption}
+							onChange={selectedTime}
+							clearIcon={null}
+							disableClock={true}
+							format={timeFormat}
+							className="date-time-option"
+						/>
+					) : null}
 				</div>
 			</div>
 		</WrapperContainer>

@@ -6,8 +6,8 @@ function DescriptionOption({ placeholder }: DescriptionProps) {
 		<div
 			style={{
 				background: 'rgba(196, 196, 196, 0.3)',
-				marginRight: '5px',
-				marginLeft: '8px',
+				marginRight: '23px',
+				marginLeft: '8px'
 			}}
 		>
 			<WrapperContainer>

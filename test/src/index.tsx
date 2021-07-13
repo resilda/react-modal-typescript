@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import store from './state/store'; 
+import store from './state/store';
+import LinearProgress from '@material-ui/core/LinearProgress';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+const App = React.lazy(() => import('./App'));
+
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
+	<Suspense fallback={<LinearProgress />}>
+		<Provider store={store}>
+			<App />
+		</Provider>
+	</Suspense>,
+	document.getElementById('root')
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
