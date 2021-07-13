@@ -1,18 +1,20 @@
 //child component
 import React, { useState } from 'react';
-import Step1 from './Step1';
-import Step2 from './Step2';
-import Step3 from './Step3';
+import Step1 from './steps/Step1';
+import Step2 from './steps/Step2';
+import Step3 from './steps/Step3';
 import Register from '../../forms/Register';
+import ContentContainer from './inputs/ContentContainer';
 import { Wrapper1 } from '../styles/ModalContainer';
-import Button from '@material-ui/core/Button';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import CloseIcon from '@material-ui/icons/Close';
 
 type Props = {
 	setModalOpen: any;
 };
 
 function ModalContent(component: Props) {
-	const [ index, setIndex ] = useState<number>(0);
+	const [index, setIndex] = useState<number>(0);
 
 	function renderStep() {
 		switch (index) {
@@ -20,22 +22,24 @@ function ModalContent(component: Props) {
 				return (
 					<Step1>
 						<div className="animation-form">
-							<div className="buttons-wrapper">
-								<Button className="button" type="button" onClick={() => component.setModalOpen(false)}>
-									<span>Close</span>
-								</Button>
-								<Button
-									className="button"
-									type="button"
-									onClick={(e) => {
-										e.preventDefault();
-										setIndex(index + 1);
-									}}
-								>
-									<span>Next</span>
-								</Button>
+							<div className="full-wrapper">
+								<div className="buttons-wrapper">
+									<div
+										className="button"
+										onClick={(e) => {
+											e.preventDefault();
+											setIndex(index + 1);
+										}}
+									>
+										<NavigateNextIcon />
+									</div>
+									<div className="button" onClick={() => component.setModalOpen(false)}>
+										<CloseIcon />
+									</div>
+								</div>
+								<h3 className="h3">+ Add New Record</h3>
 							</div>
-							<Register />
+							<ContentContainer />
 						</div>
 					</Step1>
 				);
@@ -44,19 +48,18 @@ function ModalContent(component: Props) {
 					<Step2>
 						<div className="animation-form">
 							<div className="buttons-wrapper">
-								<Button className="button" type="button" onClick={() => component.setModalOpen(false)}>
-									<span>Close</span>
-								</Button>
-								<Button
+								<div
 									className="button"
-									type="button"
 									onClick={(e) => {
 										e.preventDefault();
 										setIndex(index + 1);
 									}}
 								>
-									<span>Next</span>
-								</Button>
+									<NavigateNextIcon />
+								</div>
+								<div className="button" onClick={() => component.setModalOpen(false)}>
+									<CloseIcon />
+								</div>
 							</div>
 							<Register />
 						</div>
@@ -67,12 +70,12 @@ function ModalContent(component: Props) {
 					<Step3>
 						<div className="animation-form">
 							<div className="buttons-wrapper">
-								<Button className="button" type="button" onClick={() => component.setModalOpen(false)}>
-									<span>Close</span>
-								</Button>
-								<Button className="button" type="button" onClick={() => component.setModalOpen(false)}>
-									<span>Next</span>
-								</Button>
+								<div className="button" onClick={() => component.setModalOpen(false)}>
+									<NavigateNextIcon />{' '}
+								</div>
+								<div className="button" onClick={() => component.setModalOpen(false)}>
+									<CloseIcon />
+								</div>
 							</div>
 							<Register />
 						</div>

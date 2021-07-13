@@ -1,14 +1,12 @@
-// import UserData from './users/UserData';
+// import MainPage from './users/MainPage';
 import ModalWrapper from './portals/ModalWrapper';
-// import Resize from './portals/Resize';
 import './App.css';
 
 function App() {
 	return (
 		<div className="App">
-			{/* <UserData /> */}
+			{/* <MainPage /> */}
 			<ModalWrapper />
-			{/* <Resize /> */}
 		</div>
 	);
 }

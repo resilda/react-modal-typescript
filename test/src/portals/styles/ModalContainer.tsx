@@ -7,7 +7,7 @@ export const FullWrapper = styled.div`
 
 	& .button {
 		margin-bottom: 20px;
-		background-color: blueviolet;
+		background-color: #492b66;
 		color: white;
 		margin: 10px;
 		width: 130px;
@@ -30,8 +30,8 @@ export const ModalOverlay = styled.div`
 export const Wrapper1 = styled.div`
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	justify-content: space-between;
+	align-items: space-between;
 	background: #e8e8e8;
 	box-shadow: '0 2px 3px 2px #8ABAAC';
 	border-radius: 4px;
@@ -39,9 +39,36 @@ export const Wrapper1 = styled.div`
 	border: 0;
 	background-color: whitesmoke;
 
+	& .full-wrapper {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: space-between;
+		background-color: rgba(196, 196, 196, 0.3);
+		height: 25vh;
+	}
+
+	& .buttons-wrapper {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+		margin-right: 5px;
+		margin-bottom: 30px;
+	}
+
+	.h3 {
+		font-family: Lato;
+		font-style: normal;
+		font-weight: bold;
+		font-size: 18px;
+		line-height: 22px;
+		color: #3c3f42;
+		padding-left: 10px;
+	}
+
 	@media screen and (min-width: 280px) and (max-width: 480px) {
 		width: 80vw;
-		height: 70vh;
+		height: 72vh;
 		& .buttons-wrapper {
 			display: flex;
 			justify-content: center;
@@ -51,23 +78,28 @@ export const Wrapper1 = styled.div`
 	}
 
 	@media screen and (min-width: 481px) and (max-width: 768px) {
+		width: 85vw;
+		height: 70vh;
+	}
+
+	@media screen and (min-width: 769px) and (max-width: 1024px) {
+		width: 80vw;
+		height: 70vh;
+	}
+
+	@media screen and (min-width: 1025px) and (max-width: 1200px) {
+		width: 75vw;
+		height: 70vh;
+	}
+
+	@media screen and (min-width: 1201px) and (max-width: 1400px) {
 		width: 70vw;
 		height: 60vh;
 	}
 
-	@media screen and (min-width: 769px) and (max-width: 1024px) {
-		width: 60vw;
-		height: 50vh;
-	}
-
-	@media screen and (min-width: 1025px) and (max-width: 1200px) {
-		width: 60vw;
-		height: 40vh;
-	}
-
-	@media screen and (min-width: 1201px) {
-		width: 30vw;
-		height: 50vh;
+	@media screen and (min-width: 1400px) {
+		width: 50vw;
+		height: 72vh;
 	}
 
 	& .animation-form {
@@ -138,13 +170,17 @@ export const Wrapper1 = styled.div`
 		margin-left: 5px;
 	}
 
+	& .buttons-wrapper {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
 	& .button {
-		margin-bottom: 20px;
-		background-color: blueviolet;
-		color: white;
-		margin: 20px;
-		width: 130px;
-		height: 35px;
+		color: #492b66;
+		cursor: pointer;
+		margin-right: 7px;
+		margin-top: 7px;
 	}
 `;
 
