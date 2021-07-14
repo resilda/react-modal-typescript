@@ -1,12 +1,17 @@
 //parent and child
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../state/rootReducer';
 import Modal from './Modal';
 import ModalContent from './ModalContent';
+import FilterUsers from '../layout/FilterUsers';
 import { FullWrapper, ModalOverlay } from './styles/ModalContainer';
+import { FilterUsersContainer } from '../layout/styles/FilterUsersContainer';
 import Button from '@material-ui/core/Button';
 
 function ModalWrapper() {
-	const [ modalOpen, setModalOpen ] = useState(false);
+	const userData = useSelector((state: RootState) => state.data.userData);
+	const [modalOpen, setModalOpen] = useState(false);
 
 	function handleModalOpen() {
 		setModalOpen(!modalOpen);
@@ -22,10 +27,11 @@ function ModalWrapper() {
 					<ModalContent setModalOpen={setModalOpen} />
 				</ModalOverlay>
 			</Modal>
+			<FilterUsersContainer>
+				<FilterUsers />
+			</FilterUsersContainer>
 		</FullWrapper>
 	);
 }
-
-// onClick={() => setModalOpen(false)}
 
 export default ModalWrapper;

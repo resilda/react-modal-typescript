@@ -7,10 +7,8 @@ import './App.css';
 
 function App() {
 	const userData = useSelector((state: RootState) => state.data.userData);
-	const [ valueChecked, setValueChecked ] = useState(null);
-	const [ valueSelected, setValueSelected ] = useState(null);
-
-	console.log('userData', userData);
+	const [valueChecked, setValueChecked] = useState(null);
+	const [valueSelected, setValueSelected] = useState(null);
 
 	return (
 		<div className="App">

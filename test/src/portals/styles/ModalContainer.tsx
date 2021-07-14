@@ -2,17 +2,18 @@ import styled from 'styled-components';
 
 export const FullWrapper = styled.div`
 	display: flex;
-	justify-content: flex-end;
+	justify-content: space-between;
 	align-items: center;
 	margin-right: 30px;
+	margin-left: 30px;
 
 	& .button {
 		margin-bottom: 20px;
 		background-color: #492b66;
 		color: white;
 		margin: 10px;
-		width: 110px;
-		height: 33px;
+		width: 100px;
+		height: 31px;
 	}
 `;
 

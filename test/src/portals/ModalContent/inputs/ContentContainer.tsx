@@ -13,12 +13,12 @@ import { ModuleContentContainer } from './styles/ModuleContentContanier';
 import Button from '@material-ui/core/Button';
 
 function ContentContainer() {
-	const [ valueOptionModule, setValueOptionModule ] = useState(null);
-	const [ valueOptionsForms, setValueOptionForms ] = useState(null);
-	const [ valueOptionTarget, setValueOptionTarget ] = useState(null);
-	const [ valueDatePicker, setValueDatePicker ] = useState(new Date());
-	const [ valueTimePicker, setValueTimePicker ] = useState(moment().format('hh:mm'));
-	const [ setColorCalendarIcon ] = useState('#1f1c1c');
+	const [valueOptionModule, setValueOptionModule] = useState(null);
+	const [valueOptionsForms, setValueOptionForms] = useState(null);
+	const [valueOptionTarget, setValueOptionTarget] = useState(null);
+	const [valueDatePicker, setValueDatePicker] = useState(new Date());
+	const [valueTimePicker, setValueTimePicker] = useState(moment().format('hh:mm'));
+	const [setColorCalendarIcon] = useState('#1f1c1c');
 
 	return (
 		<ModuleContentContainer>

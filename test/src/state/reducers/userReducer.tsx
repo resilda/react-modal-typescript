@@ -4,7 +4,8 @@ import { InitialStateProps } from '../propsTypes/propsTypes';
 const initialState: InitialStateProps = {
 	loading: false,
 	userData: [],
-	error: null
+	error: null,
+	filteredValue: ''
 };
 
 function usersReducer(state = initialState, action: any) {
@@ -29,6 +30,13 @@ function usersReducer(state = initialState, action: any) {
 			userData: [],
 			error: action.payload
 		};
+	}
+
+	if (action.type === actionTypes.FILTER_USERS) {
+		return {
+			...state,
+			filteredValue: action.payload
+		}
 	}
 
 	return state;
