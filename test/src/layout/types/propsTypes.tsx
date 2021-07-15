@@ -14,7 +14,4 @@ export interface PostsPropsMainPage {
 	id: any;
 	title: string;
 	body: string;
-	onChangeId: (id: any) => void;
-	onChangeTitle: (title: string) => void;
-	onChangeBody: (body: string) => void;
 }

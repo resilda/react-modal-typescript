@@ -10,7 +10,6 @@ import { FilterUsersContainer } from '../layout/styles/FilterUsersContainer';
 import Button from '@material-ui/core/Button';
 
 function ModalWrapper() {
-	const userData = useSelector((state: RootState) => state.data.userData);
 	const [modalOpen, setModalOpen] = useState(false);
 
 	function handleModalOpen() {
@@ -20,7 +19,7 @@ function ModalWrapper() {
 	return (
 		<FullWrapper>
 			<Button type="button" className="button" onClick={handleModalOpen}>
-				Click me
+				Modal
 			</Button>
 			<Modal modalOpen={modalOpen}>
 				<ModalOverlay>

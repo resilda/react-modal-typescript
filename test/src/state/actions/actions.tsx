@@ -1,14 +1,17 @@
 import * as actionTypes from './actionTypes';
 import axios from 'axios';
-import { PostProps } from '../propsTypes/propsTypes';
 
-// const USERS_API = process.env.REACT_APP_USERS_API;
+const USERS_API = process.env.REACT_APP_USERS_API;
 
 export function dataRequest() {
 	return {
 		type: actionTypes.DATA_REQUEST
 	};
 }
+
+// const apiAction = (id: any) => (dispatch, getState) => {
+
+// }
 
 export function dataSuccess(userData: Array<any>) {
 	return {
@@ -31,7 +34,7 @@ export function filterUser(filterValue: any) {
 	}
 }
 
-export function addPost({ id, title, body }: PostProps) {
+export function addPost(id: any, title: string, body: string) {
 	return {
 		type: actionTypes.ADD_POST,
 		payload: {
@@ -55,7 +58,7 @@ export function fetchData() {
 	return async function (dispatch: any) {
 		dispatch(dataRequest());
 		try {
-			const response: any = await axios.get('https://jsonplaceholder.typicode.com/users');
+			const response: any = await axios.get(`${USERS_API}`);
 			dispatch(dataSuccess(response.data));
 		} catch (error) {
 			dispatch(dataFailure(error));

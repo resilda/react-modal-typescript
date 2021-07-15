@@ -1,35 +1,37 @@
-import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../state/rootReducer';
-import { fetchData } from '../state/actions/actions';
-import { MainPageProps } from './types/propsTypes';
-import { MainPageContainer, CheckIconContainer } from './styles/MainPageContainer';
-import DetailsDropdown from './DetailsDropdown';
-import Posts from './Posts';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import CheckIcon from '@material-ui/icons/Check';
-import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
+import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../state/rootReducer";
+import { fetchData } from "../state/actions/actions";
+import { MainPageProps } from "./types/propsTypes";
+import { MainPageContainer } from "./styles/MainPageContainer";
+import DetailsDropdown from "./DetailsDropdown";
+import Posts from "./Posts";
+import CircularProgress from "@material-ui/core/CircularProgress";
+import ArrowDropDownIcon from "@material-ui/icons/ArrowDropDown";
 
-function MainPage({ components, valueChecked, checked, valueSelected, selected }: MainPageProps) {
+function MainPage({
+	components,
+	valueChecked,
+	checked,
+	valueSelected,
+	selected,
+}: MainPageProps) {
 	const loading = useSelector((state: RootState) => state.data.loading);
 	const error = useSelector((state: RootState) => state.data.error);
-	const filteredValue = useSelector((state: RootState) => state.data.filteredValue)
-
+	const filteredValue = useSelector(
+		(state: RootState) => state.data.filteredValue
+	);
+	const id = useSelector((state: RootState) => state.post.posts.id);
+	const title = useSelector((state: RootState) => state.post.posts.title);
+	const body = useSelector((state: RootState) => state.post.posts.body);
 	const dispatch = useDispatch();
 
 	const [showCheckIcon, setShowCheckIcon] = useState(false);
 	const [showMoreData, setShowMoreData] = useState(false);
 
-	const [id, setId] = useState(null);
-	const [title, setTitle] = useState('');
-	const [body, setBody] = useState('')
-
-	useEffect(
-		() => {
-			dispatch(fetchData());
-		},
-		[dispatch]
-	);
+	useEffect(() => {
+		dispatch(fetchData());
+	}, [dispatch]);
 
 	function filteredUsers(filteredList: any, input: String) {
 		if (!input) {
@@ -57,22 +59,21 @@ function MainPage({ components, valueChecked, checked, valueSelected, selected }
 									className="checkbox"
 									onClick={() => {
 										checked(user.id);
-										setShowCheckIcon(!showCheckIcon)
+										setShowCheckIcon(!showCheckIcon);
 									}}
 									style={
-										showCheckIcon && valueChecked === user.id ? { backgroundColor: '#2e7d32' } : { backgroundColor: '#ffff' }
+										showCheckIcon && valueChecked === user.id
+											? { backgroundColor: "#2e7d32" }
+											: { backgroundColor: "#ffff" }
 									}
 								>
-									{/* <CheckIconContainer showIcon={showCheckIcon}>
-								<CheckIcon />
-							</CheckIconContainer> */}
 								</div>
 								<div className="user-data">{user.name}</div>
 								<div className="arrow-dropdown-icon">
 									<ArrowDropDownIcon
 										onClick={() => {
-											setShowMoreData(!showMoreData);
 											selected(user.id);
+											setShowMoreData(!showMoreData);
 										}}
 									/>
 									{showMoreData && valueSelected === user.id ? (
@@ -80,18 +81,10 @@ function MainPage({ components, valueChecked, checked, valueSelected, selected }
 									) : null}
 								</div>
 							</div>
-
 						))}
 					</div>
 				</div>
-				<Posts
-					id={id}
-					title={title}
-					body={body}
-					onChangeId={(idProp) => setId(idProp)}
-					onChangeTitle={(titleProp) => setTitle(titleProp)}
-					onChangeBody={(bodyProp) => setBody(bodyProp)}
-				/>
+				<Posts id={id} title={title} body={body} />
 			</div>
 		</MainPageContainer>
 	);

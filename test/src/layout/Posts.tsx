@@ -1,58 +1,63 @@
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addPost, removePost } from "../state/actions/actions";
 import { RootState } from "../state/rootReducer";
-// import { PostProps } from '../state/propsTypes/propsTypes'
 import { PostsPropsMainPage } from './types/propsTypes';
 import { PostsContainer } from './styles/PostsContainer';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-function Posts({ id, title, body, onChangeId, onChangeTitle, onChangeBody }: PostsPropsMainPage) {
+function Posts({ id, title, body }: PostsPropsMainPage) {
     const posts = useSelector((state: RootState) => state.post.posts);
+    const defaultTitle = useSelector((state: RootState) => state.post.posts.title);
+    const defaultBody = useSelector((state: RootState) => state.post.posts.body)
     const dispatch = useDispatch();
-    console.log('posts', posts);
+
+    const [titleInput, setTitleInput] = useState(defaultTitle);
+    const [bodyInput, setBodyInput] = useState(defaultBody);
+    const [showDeleteButton, setShowDeleteButton] = useState(false);
 
     function addPostOnSubmit() {
-        dispatch(addPost({ id, title, body }))
+        dispatch(addPost(id, titleInput, bodyInput));
     }
-
-    function showPosts() {
-        const allPosts = posts.map((post) => (
-            <div key={post.id}>
-                <h4>{post.title}</h4>
-                <p>{post.body}</p>
-            </div>
-        ))
-        return allPosts;
-    }
-
-    const a = showPosts();
-    console.log('a', a)
 
     function deletePostOnClick() {
-        dispatch(removePost(id))
+        dispatch(removePost(id));
     }
 
     return (
         <PostsContainer>
             <h2>Posts</h2>
-            <div>
-                Title
-                <TextField variant="standard" onChange={() => onChangeTitle(title)} />
+            <div className="text-field-wrapper">
+                <h4 className="elements">Title</h4>
+                <TextField variant="standard" onChange={(e: any) => setTitleInput(e.target.value)} className="text-field" />
+            </div>
+            <div className="text-field-wrapper">
+                <h4 className="elements">Body</h4>
+                <TextField variant="standard" onChange={(e: any) => setBodyInput(e.target.value)} className="text-field" />
             </div>
             <div>
-                Body
-                <TextField variant="standard" onChange={() => onChangeBody(body)} />
-            </div>
-            <div className="button-wrapper">
-                <Button onClick={() => addPostOnSubmit()} className="button">
+                <Button onClick={() => {
+                    addPostOnSubmit()
+                    setShowDeleteButton(!showDeleteButton)
+                }} className="button">
                     Add
                 </Button>
-                <Button onClick={() => deletePostOnClick()} className="button">
-                    Delete
-                </Button>
             </div>
-            {showPosts()}
+            <div className="post-wrapper" onClick={() => {
+                deletePostOnClick()
+                setShowDeleteButton(false)
+                setTitleInput('');
+                setBodyInput('');
+            }}>
+                <div className="elements-wrapper">
+                    <h4>{posts.title}</h4>
+                    <h3 className="body">{posts.body}</h3>
+                </div>
+                {showDeleteButton ? <Button className="delete-button">
+                    Delete
+                </Button> : null}
+            </div>
         </PostsContainer>
     )
 }

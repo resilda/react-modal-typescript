@@ -28,4 +28,52 @@ export const DetailsDropdownContainer = styled.div`
 		margin-left: 250px;
 		margin-bottom: 10px;
 	}
+
+	& .animation-form {
+		animation: opt-animation3 1s;
+		-moz-animation-fill-mode: forwards;
+		-webkit-animation-fill-mode: forwards;
+		animation-fill-mode: forwards;
+	}
+
+	@-webkit-keyframes opt-animation3 {
+		0% {
+			opacity: 0;
+			transform: scale(0.75);
+		}
+		100% {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+	@-moz-keyframes opt-animation3 {
+		0% {
+			opacity: 0;
+			transform: scale(0.75);
+		}
+		100% {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+	@-o-keyframes opt-animation3 {
+		0% {
+			opacity: 0;
+			transform: scale(0.75);
+		}
+		100% {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
+	@keyframes opt-animation3 {
+		0% {
+			opacity: 0;
+			transform: scale(0.75);
+		}
+		100% {
+			opacity: 1;
+			transform: scale(1);
+		}
+	}
 `;

@@ -5,12 +5,12 @@ export interface InitialStateProps {
 	filteredValue: any;
 }
 
-export interface PostProps {
+interface PostProps {
 	id: any;
-	title: String;
-	body: String;
+	title: string;
+	body: string;
 }
 
 export interface InitialStatePostsProps {
-	posts: PostProps[]
+	posts: PostProps
 }
