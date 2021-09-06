@@ -55,7 +55,7 @@ export const ModuleContentContainer = styled.div`
 
 export const WrapperContainer = styled.div`
 	width: 100%;
-	height: 36px;
+	height: 28px;
 	position: relative;
 	border-radius: 3px;
 	margin: 10px;
